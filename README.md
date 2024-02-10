@@ -8,7 +8,7 @@
    ```bash
    git clone 'https://github.com/rayanamal/clean-my-commit-history/'
    ```
-3. Run the script:
+3. Inspect, and then run the script:
    ```bash
    clean-my-commit-history/clean.sh
    ```
