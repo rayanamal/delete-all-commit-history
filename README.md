@@ -1,5 +1,3 @@
-# clean-my-commit-history
-
 How to clean commit history in all or some of my remote repositories?
 
 1. Install Nix if you haven't already:
