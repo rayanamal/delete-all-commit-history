@@ -12,3 +12,9 @@
    ```bash
    clean-my-commit-history/clean.sh
    ```
+## Notes
+- Enough disk space to download all given repositories is needed.
+- The user must have commit access to the given repositories.
+
+## Contributing
+I do accept contributions.
