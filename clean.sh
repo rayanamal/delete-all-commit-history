@@ -5,35 +5,39 @@
 
 # This script cleans up commit histories of all repositories of a Github user.
 
-SCRIPT=$(cat <<'END_HEREDOC'
+fish --private --no-config --command "$(cat <<'END_HEREDOC'
+
 set PATH (string split ":" $argv[1])
 set argv $argv[2..]
 
 set options (fish_opt -s h -l help)
-argparse $options -- $argv
+argparse --stop-nonopt $options -- $argv
 
 if set --query _flag_help
-    echo ' 
-        Usage: ./clean-my-commit-history.sh [-h | --help] [REPO_URLS...]
-        Clean up commit histories of the provided remote git repositories. The user must have full access to the repositories.
-        Prompts the user to log in with Github if no repository URLs are provided.
-        
-        Options:
-          -h, --help  Show this help message and exit.
-    '
+    echo '
+Usage: ./clean-my-commit-history.sh [-h | --help] [REPO_URLS...]
+
+Clean up commit histories of the provided remote git repositories. The user must have full access to the repositories.
+Prompts the user to log in with a Github account if no repository URLs are provided.
+
+Options:
+    -h, --help  Show this help message and exit.
+'
     exit
 end
 
-if test -n $argv
+if test (count $argv) != 0
     set repo_urls $argv
 else
-    echo "You'll now be prompted to login to Github for the Github CLI."
-    fish -i -c "gh auth login"
+    echo "You'll now be prompted to login to Github to fetch the URLs of your repositories.\n"
+    fish -i -c "gh auth login" &&
     set repo_urls (
         gh repo list --json url --limit 1000000 |
         jq -r '.[] | .url'
     )
+    echo setn
 end
+and echo ahha
 
 for repo_url in $repo_urls
     set -x repo_url $repo_url
@@ -56,6 +60,4 @@ wait
 echo "Finished cleaning all repositories."
 
 END_HEREDOC
-)
-
-fish -c "$SCRIPT" "$PATH" "$@"
+)" "$PATH" "$@"
