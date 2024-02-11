@@ -1,4 +1,4 @@
-## How to clean commit history in all or some of my remote repositories?
+## How to delete all commit history in Github, or other remote git repositories?
 
 1. Install Nix if you haven't already:
    ```bash
