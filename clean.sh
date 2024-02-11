@@ -7,4 +7,6 @@
 
 # The workaround here is needed because of the bug https://github.com/NixOS/nixpkgs/issues/286976
 
-fish --private --no-config ./script.fish "$PATH" "$@"
+script=$(dirname "$BASH_SOURCE")/script.fish
+
+fish --private --no-config $script "$PATH" "$@"

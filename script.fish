@@ -23,7 +23,7 @@ else
     echo -e "\nYou'll now be prompted to login with Github to get a list of your repositories."
     sleep 2
     echo -e "\033[1m\n !!! THIS ACTION WILL DELETE ALL OF YOUR REPOSITORIES' COMMIT HISTORY !!! \033[0m\n"
-    sleep 6
+    sleep 5
     gh auth login
     set repo_urls (
         gh repo list --json url --limit 1000000 |
