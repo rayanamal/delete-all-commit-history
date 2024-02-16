@@ -17,4 +17,4 @@
 - The user must have commit access to the given repositories.
 
 ## Contributing
-I do accept contributions.
+I accept contributions.
